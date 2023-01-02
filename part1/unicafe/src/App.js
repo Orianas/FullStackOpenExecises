@@ -4,6 +4,14 @@ const Header = () => <h1>Give Feedback</h1>
 const StatDisplay = ({ label, value }) => <div>{label}: {value}</div>
 const Statistics = ({ good, neutral, bad }) => {
   let total = good + neutral + bad
+  if (total === 0) {
+    return (
+      <>
+        <h1>Statistics</h1>
+        <p>No feedback given</p>
+      </>
+    )
+  }
   return (
     <>
       <h1>Statistics</h1>
