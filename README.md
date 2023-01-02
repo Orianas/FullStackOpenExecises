@@ -41,7 +41,7 @@ Part 0 was a great introduction to developing on the web. The information within
 
 ### Part 1
 
-Part 1 was very enjoyable. Was lots of new information and was presented in a way that held your hand enough, but the exercises honed the skills. Event handling for any language is hard sometimes to wrap the mind around and in particular the way JS approaches functional programming is different. I got stuck and spent roughly an hour on trying to figure out why one of my functions was creating a non-iterable structure to find that it functioned with previously written code perfectly, but new code was having an issue with the objects instead of an array.
+Part 1 was very enjoyable. Was lots of new information and was presented in a way that held your hand enough, but the exercises honed the skills. Event handling for any language is hard sometimes to wrap the mind around and in particular the way JS approaches functional programming is different. I got stuck and spent roughly an hour on trying to figure out why one of my functions was creating a non-iterable structure to find that it functioned with previously written code perfectly, but new code was having an issue with the objects instead of an array. Need to be sure to watch the [] and {}.
 
 ### Part 2
 
