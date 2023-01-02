@@ -19,7 +19,7 @@ Coursework Materials can be found at: <https://fullstackopen.com/en/>
 | Section | Description                                                  | Start    | Completed |
 |---      |---                                                           | ---      | ---       |  
 | Part 0  | Fundamentals of Web apps                                     | 1/1/2023 | 1/1/2023  |
-| Part 1  | Introduction to React                                        | 1/1/2023 |           |
+| Part 1  | Introduction to React                                        | 1/1/2023 | 1/2/2023  |
 | Part 2  | Communicating with server                                    |          |           |
 | Part 3  | Programming a server with NodeJS and Express                 |          |           |
 | Part 4  | Testing Express servers, user administration                 |          |           |
@@ -40,6 +40,8 @@ Coursework Materials can be found at: <https://fullstackopen.com/en/>
 Part 0 was a great introduction to developing on the web. The information within would be a great introduction to anyone looking to start web development and doing the later exercises introduced me to a new technology I will be using for diagraming for my classes in the future. While I got little from the material as I knew the majority of the information I believe as an introduction it works fantastic.
 
 ### Part 1
+
+Part 1 was very enjoyable. Was lots of new information and was presented in a way that held your hand enough, but the exercises honed the skills. Event handling for any language is hard sometimes to wrap the mind around and in particular the way JS approaches functional programming is different. I got stuck and spent roughly an hour on trying to figure out why one of my functions was creating a non-iterable structure to find that it functioned with previously written code perfectly, but new code was having an issue with the objects instead of an array.
 
 ### Part 2
 
