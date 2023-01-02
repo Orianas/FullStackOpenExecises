@@ -1,6 +1,40 @@
 import { useState } from 'react'
 
-const Numbers = ({ persons, filter }) => {
+const Filter = ({ value, onChange }) => {
+  return (
+    <div>
+      filter shown with <input
+        onChange={onChange}
+        value={value}
+      />
+    </div>
+  )
+}
+
+const PersonForm = ({ onSubmit, onChangeName, valueName,
+  onChangeNumber, valueNumber }) => {
+  return (
+    <form onSubmit={onSubmit}>
+      <div>
+        name: <input
+          onChange={onChangeName}
+          value={valueName}
+        />
+      </div>
+      <div>
+        number: <input
+          onChange={onChangeNumber}
+          value={valueNumber}
+        />
+      </div>
+      <div>
+        <button type="submit">add</button>
+      </div>
+    </form>
+  )
+}
+
+const Persons = ({ persons, filter }) => {
   const personsToShow = persons.filter(person =>
     person.name.toLowerCase().includes(filter))
   return (
@@ -53,36 +87,18 @@ const App = () => {
   }
 
   return (
-    <div> debug: {newFilter}
+    <div>
       <h2>Phonebook</h2>
-      <div>
-        filter shown with <input
-          onChange={handleFilterChange}
-          value={newFilter}
+      <Filter onChange={handleFilterChange} value={newFilter} />
+      <div><h3>Add New</h3>
+        <PersonForm onSubmit={addPerson}
+          onChangeName={handleNameChange} valueName={newName}
+          onChangeNumber={handleNumberChange} valueNumber={newNumber}
         />
       </div>
-      <div><h3>Add New</h3>
-        <form onSubmit={addPerson}>
-          <div>
-            name: <input
-              onChange={handleNameChange}
-              value={newName}
-            />
-          </div>
-          <div>
-            number: <input
-              onChange={handleNumberChange}
-              value={newNumber}
-            />
-          </div>
-          <div>
-            <button type="submit">add</button>
-          </div>
-        </form>
-      </div>
-      <h2>Numbers</h2>
-      <Numbers persons={persons} filter={newFilter} />
-    </div>
+      <h3>Numbers</h3>
+      <Persons persons={persons} filter={newFilter} />
+    </div >
   )
 }
 
