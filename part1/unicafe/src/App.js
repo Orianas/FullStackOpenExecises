@@ -1,7 +1,15 @@
 import { useState } from 'react'
 
 const Header = () => <h1>Give Feedback</h1>
-const StattisticsLine = ({ label, value }) => <div>{label}: {value}</div>
+const StattisticsLine = ({ label, value }) => {
+  return (
+    <tr>
+      <td>{label}</td>
+      <td>{value}</td>
+    </tr>
+  )
+}
+
 const Statistics = ({ good, neutral, bad }) => {
   let total = good + neutral + bad
   if (total === 0) {
@@ -15,12 +23,16 @@ const Statistics = ({ good, neutral, bad }) => {
   return (
     <>
       <h1>Statistics</h1>
-      <StattisticsLine label='good' value={good} />
-      <StattisticsLine label='neutral' value={neutral} />
-      <StattisticsLine label='bad' value={bad} />
-      <StattisticsLine label='all' value={total} />
-      <StattisticsLine label='average' value={(good - bad) / total} />
-      <StattisticsLine label='positive' value={((good / total) * 100).toString().concat('%')} />
+      <table>
+        <tbody>
+          <StattisticsLine label='good' value={good} />
+          <StattisticsLine label='neutral' value={neutral} />
+          <StattisticsLine label='bad' value={bad} />
+          <StattisticsLine label='all' value={total} />
+          <StattisticsLine label='average' value={(good - bad) / total} />
+          <StattisticsLine label='positive' value={((good / total) * 100).toString().concat('%')} />
+        </tbody>
+      </table>
     </>
   )
 }
