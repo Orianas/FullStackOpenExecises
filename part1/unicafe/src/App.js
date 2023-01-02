@@ -3,13 +3,16 @@ import { useState } from 'react'
 const Header = () => <h1>Give Feedback</h1>
 const StatDisplay = ({ label, value }) => <div>{label}: {value}</div>
 const Statistics = ({ good, neutral, bad }) => {
-  console.log(good, neutral, bad)
+  let total = good + neutral + bad
   return (
     <>
       <h1>Statistics</h1>
-      <StatDisplay label={'good'} value={good} />
-      <StatDisplay label={'neutral'} value={neutral} />
-      <StatDisplay label={'bad'} value={bad} />
+      <StatDisplay label='good' value={good} />
+      <StatDisplay label='neutral' value={neutral} />
+      <StatDisplay label='bad' value={bad} />
+      <StatDisplay label='all' value={total} />
+      <StatDisplay label='average' value={(good - bad) / total} />
+      <StatDisplay label='positive' value={((good / total) * 100).toString().concat('%')} />
     </>
   )
 }
