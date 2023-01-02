@@ -27,9 +27,12 @@ const Content = ({ parts }) => {
 }
 
 const Total = ({ parts }) => {
+  let total = 0
+  parts.map(part => total += part.exercises)
+
   return (
     <p>
-      Number of exercises {parts[0].exercises + parts[1].exercises + parts[2].exercises}
+      Number of exercises {total}
     </p>
   )
 }
@@ -55,7 +58,7 @@ const App = () => {
       },
       {
         name: 'Hells yea forever',
-        exercises: 12,
+        exercises: 14,
         id: 4
       },
     ]
