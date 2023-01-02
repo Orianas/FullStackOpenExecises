@@ -1,5 +1,4 @@
 const Header = (props) => {
-  console.log(props)
   return (
     <h1>{props.course.name}</h1>
   )
@@ -51,7 +50,6 @@ const App = () => {
   }
   return (
     <div>
-      Test
       <Header course={course} />
       <Content course={course} />
       <Total course={course} />
