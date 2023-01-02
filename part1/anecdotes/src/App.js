@@ -1,5 +1,26 @@
 import { useState } from 'react'
 
+const Anecdote = ({ anecdotes, state }) => {
+  return (
+    <div>
+      <h1>Anecdote of the Day</h1>
+      {anecdotes[state.state]} <br />
+      has {state.votes[state.state]} votes.
+    </div>
+  )
+}
+
+const PopularAnecdote = ({ anecdotes, state }) => {
+  const maxIdx = state.votes.indexOf(Math.max(...state.votes))
+  return (
+    <div>
+      <h1>Anecdote with the Most Votes</h1>
+      {anecdotes[maxIdx]} <br />
+      has {state.votes[maxIdx]} votes.
+    </div>
+  )
+}
+
 const Button = ({ handleClick, text }) => (
   <button onClick={handleClick}>
     {text}
@@ -25,17 +46,17 @@ const App = () => {
     setSelected({ ...selected, state: Math.floor(Math.random() * anecdotes.length) })
   }
   const increaseVote = () => {
-    const copy = { ...selected.votes }
+    const copy = [...selected.votes]
     copy[selected.state] += 1
     setSelected({ state: selected.state, votes: copy })
   }
 
   return (
     <div>
-      {anecdotes[selected.state]} <br />
-      has {selected.votes[selected.state]} votes <br />
+      <Anecdote anecdotes={anecdotes} state={selected} />
       <Button handleClick={increaseVote} text='vote' />
       <Button handleClick={setRandom} text='next anecdote' />
+      <PopularAnecdote anecdotes={anecdotes} state={selected} />
     </div>
   )
 }
