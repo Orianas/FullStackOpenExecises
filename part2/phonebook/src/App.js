@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react'
-import ListPersons from './components/ListPersons'
+import Person from './components/Person'
 import NewPerson from './components/NewPerson'
 import numberService from './services/numbers'
 
@@ -20,6 +20,10 @@ const App = () => {
   const [newNumber, setNewNumber] = useState('')
   const [newFilter, setFilter] = useState('')
 
+  const handleNameChange = (event) => setNewName(event.target.value)
+  const handleNumberChange = (event) => setNewNumber(event.target.value)
+  const handleFilterChange = (event) => setFilter(event.target.value)
+
   useEffect(() => {
     numberService
       .getAll()
@@ -27,10 +31,6 @@ const App = () => {
         setPersons(response)
       })
   }, [])
-
-  const handleNameChange = (event) => setNewName(event.target.value)
-  const handleNumberChange = (event) => setNewNumber(event.target.value)
-  const handleFilterChange = (event) => setFilter(event.target.value)
 
   const addPerson = (event) => {
     event.preventDefault()
@@ -53,6 +53,21 @@ const App = () => {
     }
   }
 
+  const removePerson = id => {
+    const name = persons.find(person => person.id === id).name
+    if (window.confirm(`Really delete ${name}?`)) {
+      numberService
+        .update(id)
+        .then(() => {
+          setPersons(persons.filter(person =>
+            person.id !== id))
+        })
+    }
+  }
+
+  const personsToShow = persons.filter(person =>
+    person.name.toLowerCase().includes(newFilter.toLowerCase()))
+
   return (
     <div>
       <h2>Phonebook</h2>
@@ -64,7 +79,15 @@ const App = () => {
         />
       </div>
       <h3>Numbers</h3>
-      <ListPersons persons={persons} filter={newFilter} />
+      <ul>
+        {personsToShow.map(person =>
+          <Person
+            key={person.id}
+            person={person}
+            removePerson={() => removePerson(person.id)}
+          />
+        )}
+      </ul>
     </div >
   )
 }

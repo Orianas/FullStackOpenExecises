@@ -11,8 +11,15 @@ const create = newObject => {
     return request.then(request => request.data)
 }
 
-const update = () => {
+const update = (id, newObject = 'delete') => {
+    let request
+    const updateURL = `${baseURL}/${id}`
+    if (newObject === 'delete')
+        request = axios.delete(updateURL)
+    else
+        request = axios.put(updateURL, newObject)
 
+    return request.then(response => response.data)
 }
 
 const numbersService = {
