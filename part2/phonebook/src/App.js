@@ -1,5 +1,7 @@
 import { useState, useEffect } from 'react'
-import axios from 'axios'
+import ListPersons from './components/ListPersons'
+import NewPerson from './components/NewPerson'
+import numberService from './services/numbers'
 
 const Filter = ({ value, onChange }) => {
   return (
@@ -12,49 +14,6 @@ const Filter = ({ value, onChange }) => {
   )
 }
 
-const PersonForm = ({ onSubmit, onChangeName, valueName,
-  onChangeNumber, valueNumber }) => {
-  return (
-    <form onSubmit={onSubmit}>
-      <div>
-        name: <input
-          onChange={onChangeName}
-          value={valueName}
-        />
-      </div>
-      <div>
-        number: <input
-          onChange={onChangeNumber}
-          value={valueNumber}
-        />
-      </div>
-      <div>
-        <button type="submit">add</button>
-      </div>
-    </form>
-  )
-}
-
-const Persons = ({ persons, filter }) => {
-  const personsToShow = persons.filter(person =>
-    person.name.toLowerCase().includes(filter))
-  return (
-    <div>
-      <ul>
-        {personsToShow.map(person =>
-          <Person key={person.name} person={person} />
-        )}
-      </ul>
-    </div>
-  )
-}
-
-const Person = ({ person }) => {
-  return (
-    <li>{person.name} {person.number}</li>
-  )
-}
-
 const App = () => {
   const [persons, setPersons] = useState([])
   const [newName, setNewName] = useState('')
@@ -62,12 +21,10 @@ const App = () => {
   const [newFilter, setFilter] = useState('')
 
   useEffect(() => {
-    console.log('effect')
-    axios
-      .get('http://localhost:3001/persons')
+    numberService
+      .getAll()
       .then(response => {
-        console.log('promise fulfilled')
-        setPersons(response.data)
+        setPersons(response)
       })
   }, [])
 
@@ -86,9 +43,13 @@ const App = () => {
         number: newNumber,
       }
 
-      setPersons(persons.concat(newPerson))
-      setNewName('')
-      setNewNumber('')
+      numberService
+        .create(newPerson)
+        .then(returnedPerson => {
+          setPersons(persons.concat(returnedPerson))
+          setNewName('')
+          setNewNumber('')
+        })
     }
   }
 
@@ -97,13 +58,13 @@ const App = () => {
       <h2>Phonebook</h2>
       <Filter onChange={handleFilterChange} value={newFilter} />
       <div><h3>Add New</h3>
-        <PersonForm onSubmit={addPerson}
+        <NewPerson onSubmit={addPerson}
           onChangeName={handleNameChange} valueName={newName}
           onChangeNumber={handleNumberChange} valueNumber={newNumber}
         />
       </div>
       <h3>Numbers</h3>
-      <Persons persons={persons} filter={newFilter} />
+      <ListPersons persons={persons} filter={newFilter} />
     </div >
   )
 }
