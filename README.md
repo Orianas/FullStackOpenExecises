@@ -20,7 +20,7 @@ Coursework Materials can be found at: <https://fullstackopen.com/en/>
 |---      |---                                                           | ---      | ---       |  
 | Part 0  | Fundamentals of Web apps                                     | 1/1/2023 | 1/1/2023  |
 | Part 1  | Introduction to React                                        | 1/1/2023 | 1/2/2023  |
-| Part 2  | Communicating with server                                    | 1/2/2023 |           |
+| Part 2  | Communicating with server                                    | 1/2/2023 | 1/7/2023  |
 | Part 3  | Programming a server with NodeJS and Express                 |          |           |
 | Part 4  | Testing Express servers, user administration                 |          |           |
 | Part 5  | Testing React apps                                           |          |           |
@@ -44,6 +44,8 @@ Part 0 was a great introduction to developing on the web. The information within
 Part 1 was very enjoyable. Was lots of new information and was presented in a way that held your hand enough, but the exercises honed the skills. Event handling for any language is hard sometimes to wrap the mind around and in particular the way JS approaches functional programming is different. I got stuck and spent roughly an hour on trying to figure out why one of my functions was creating a non-iterable structure to find that it functioned with previously written code perfectly, but new code was having an issue with the objects instead of an array. Need to be sure to watch the [] and {}.
 
 ### Part 2
+
+Whew! After Part 1 was not prepared for this! This was a heavy Part and I definatly feel the brunt here. One of the big changes with this section with my time was an issue with the content. There were serveral API changes that the creators were not prepared for. With all of that said this was a great section and I feel like I learned quite a bit. This was in addition to certain aspects that I didn't have experience with before. This is when the rubber starts meeting the road!
 
 ### Part 3
 
